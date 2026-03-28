@@ -22,15 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-# Python
-backend/venv/
-backend/__pycache__/
-backend/.env
-
-# Node
-frontend/node_modules/
-frontend/dist/
-
-# OS
-.DS_Store
-Thumbs.db
