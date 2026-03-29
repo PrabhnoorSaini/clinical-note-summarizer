@@ -14,7 +14,7 @@ app = FastAPI(title="Clinical Note Summarizer API")
 # Allow React frontend to talk to the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Vite default port
+    allow_origins=["http://localhost:5173", "https://*.azurestaticapps.net"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

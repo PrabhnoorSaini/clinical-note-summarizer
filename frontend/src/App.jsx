@@ -3,7 +3,7 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import "./App.css";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "https://clinical-summarizer-api.azurewebsites.net";
 
 const SAMPLE_NOTE = `Patient: Margaret H., 78F
 Date: 2024-11-12
