@@ -21,19 +21,18 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          cd backend
-          python -m venv antenv
-          source antenv/bin/activate
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: |
-            backend/
-            !backend/antenv/
+          path: .
+          exclude: |
+            venv/
+            __pycache__/
+            frontend/
+            .github/
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,4 +59,4 @@ jobs:
         with:
           app-name: 'clinical-summarizer-api'
           slot-name: 'Production'
-          startup-command: 'cd /home/site/wwwroot && pip install -r requirements.txt && uvicorn main:app --host 0.0.0.0 --port 8000'
+          startup-command: 'pip install -r requirements.txt && uvicorn main:app --host 0.0.0.0 --port 8000'
