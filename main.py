@@ -14,7 +14,7 @@ app = FastAPI(title="Clinical Note Summarizer API")
 # Allow React frontend to talk to the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "https://*.azurestaticapps.net"],
+    allow_origins=["http://localhost:5173", "https://wonderful-hill-0f3362b0f.4.azurestaticapps.net"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
