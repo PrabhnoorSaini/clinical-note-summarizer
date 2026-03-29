@@ -4,19 +4,44 @@ An AI-powered tool for healthcare providers to summarize clinical notes into str
 
 ---
 
-## 🚀 Getting Started
+## 🌐 Live Demo
+
+- **Frontend:** https://wonderful-hill-0f3362b0f.4.azurestaticapps.net
+- **Backend API:** https://clinical-summarizer-api.azurewebsites.net
+- **API Docs (Swagger):** https://clinical-summarizer-api.azurewebsites.net/docs
+
+---
+
+## 🏗️ Architecture
+```
+User (React Frontend — Azure Static Web Apps)
+              ↓
+   FastAPI Backend (Azure App Service)
+              ↓
+        OpenAI GPT-4o
+              ↓
+   Structured SOAP Summary
+```
+
+## ✨ Features
+
+- [x] Paste raw clinical notes and receive a structured SOAP summary
+- [x] PDF upload with drag & drop support
+- [x] Backend deployed on Azure App Service
+- [x] Frontend deployed on Azure Static Web Apps
+- [x] CI/CD via GitHub Actions (auto-deploys on push to main)
+
+---
+
+## 🚀 Running Locally
 
 ### Prerequisites
 - Python 3.11+
 - Node.js 18+
-- An OpenAI API key (for local dev) or Azure OpenAI resource (for production)
+- An OpenAI API key from https://platform.openai.com
 
----
-
-### Backend Setup
-
+### Backend
 ```bash
-cd backend
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -27,53 +52,31 @@ cp .env.example .env
 uvicorn main:app --reload
 ```
 
-API will be running at: http://localhost:8000  
+API runs at: http://localhost:8000  
 Swagger docs at: http://localhost:8000/docs
 
----
-
-### Frontend Setup
-
+### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Frontend will be running at: http://localhost:5173
-
----
-
-## 🏗️ Architecture
-
-```
-User (React Frontend)
-        ↓
-  FastAPI Backend
-        ↓
-  OpenAI / Azure OpenAI
-        ↓
-  Structured SOAP Summary
-```
+Frontend runs at: http://localhost:5173
 
 ---
 
 ## ☁️ Azure Deployment
 
-- **Backend:** Azure App Service (Python)
-- **Frontend:** Azure Static Web Apps
-- **AI:** Azure OpenAI Service (GPT-4o)
+| Component | Service |
+|---|---|
+| Backend (FastAPI) | Azure App Service (Python 3.12, Linux) |
+| Frontend (React) | Azure Static Web Apps |
+| AI Model | OpenAI GPT-4o |
+| CI/CD | GitHub Actions |
+| Region | Canada Central |
 
-See `/docs/azure-deployment.md` for step-by-step instructions.
-
----
-
-## 📋 Features
-
-- [x] Paste clinical notes and receive a structured SOAP summary
-- [x] PDF upload support
-- [ ] Azure deployment
-- [ ] Authentication layer
+Deployments trigger automatically on every push to `main`.
 
 ---
 
